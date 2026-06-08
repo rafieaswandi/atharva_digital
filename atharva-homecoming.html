@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atharva Homecoming — Undangan Digital</title>
+<link rel="icon" type="image/png" href="assets/icon/AH-Icon.png">
+<meta name="description" content="Undangan digital Atharva Homecoming — Penutupan Program IDN Backpacker 2026">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ================================================
+   ATHARVA HOMECOMING — DIGITAL INVITATION
+   Boarding Pass Style · 2026
+   By: rafieaswandi.my.id | @rafie_aswandi
+   ================================================
+   CARA EDIT: Cari bagian "EVENT DATA — EDIT DI SINI"
+   di bagian bawah file (dekat <script>) lalu isi
+   semua informasi acara di sana.
+   ================================================ 
+*/
+
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#F5F0E8;
+  --beige:#E8DDD0;
+  --brown:#8B6F47;
+  --dark:#1C1C1C;
+  --olive:#5C6B2E;
+  --sage:#7A8C50;
+  --warm-white:#FDFAF5;
+  --stamp-green:#2E5016;
+  --ink:#2C2416;
+  --border-dash:2px dashed #C4B49A;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--dark);overflow-x:hidden}
+
+/* ─── NAVBAR ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(28,28,28,0.95);backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+.nav-inner{
+  max-width:900px;margin:0 auto;padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{font-family:'Space Mono',monospace;color:var(--cream);font-size:12px;letter-spacing:3px;text-transform:uppercase}
+.nav-links{display:flex;gap:20px;list-style:none}
+.nav-links a{
+  color:rgba(245,240,232,0.7);text-decoration:none;
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  transition:color 0.3s;font-family:'Space Mono',monospace;
+}
+.nav-links a:hover{color:var(--cream)}
+.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--cream);transition:all 0.3s}
+
+/* ─── HERO / BOARDING PASS ─── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:80px 16px 40px;background:var(--dark);
+  position:relative;overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;opacity:0.04;pointer-events:none}
+.hero-bg svg{width:100%;height:100%}
+
+.boarding-pass{
+  background:var(--warm-white);border-radius:4px;
+  max-width:560px;width:100%;position:relative;
+  box-shadow:0 30px 80px rgba(0,0,0,0.4);
+}
+.bp-top{padding:28px 28px 0}
+.bp-airline{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:20px;flex-wrap:wrap;gap:8px;
+}
+.bp-airline-name{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--brown)}
+.bp-status{
+  font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;
+  color:var(--olive);border:1px solid var(--olive);padding:3px 8px;border-radius:2px;
+}
+.bp-route{display:flex;align-items:center;margin-bottom:16px}
+.bp-city{flex:1}
+.bp-city-code{
+  font-family:'Space Mono',monospace;font-size:42px;font-weight:700;
+  color:var(--ink);line-height:1;letter-spacing:-2px;
+}
+.bp-city-name{font-size:10px;color:var(--brown);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+.bp-route-center{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 16px}
+.route-line{display:flex;align-items:center;gap:6px;justify-content:center}
+.route-dot{width:6px;height:6px;border-radius:50%;border:1.5px solid var(--brown)}
+.route-dashes{flex:1;border-top:1.5px dashed var(--brown);min-width:40px}
+.route-plane{font-size:16px;display:inline-block}
+.route-label{font-family:'Space Mono',monospace;font-size:9px;color:var(--brown);letter-spacing:1px;text-transform:uppercase}
+.bp-city-right{text-align:right}
+.bp-title-block{margin-bottom:18px}
+.bp-event-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--ink);line-height:1.2}
+.bp-event-sub{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--brown);margin-top:4px}
+.bp-fields{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:20px}
+.bp-field label{display:block;font-family:'Space Mono',monospace;font-size:9px;color:var(--brown);letter-spacing:2px;text-transform:uppercase;margin-bottom:3px}
+.bp-field span{display:block;font-size:12px;color:var(--ink);font-weight:700;font-family:'Space Mono',monospace}
+.bp-tear{display:flex;align-items:center;margin:0 -0px}
+.bp-tear-circle{width:24px;height:24px;border-radius:50%;background:var(--dark);flex-shrink:0}
+.bp-tear-line{flex:1;border-top:var(--border-dash)}
+.bp-bottom{padding:16px 28px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.bp-barcode{display:flex;gap:2px;align-items:flex-end}
+.bp-barcode-bar{background:var(--ink);border-radius:1px}
+.bp-qr-section{text-align:right}
+.bp-qr{
+  width:60px;height:60px;background:var(--ink);border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:4px;margin-left:auto;
+}
+.bp-qr-inner{width:44px;height:44px;background:var(--warm-white);border-radius:2px;overflow:hidden}
+.bp-seat-info{font-family:'Space Mono',monospace;font-size:9px;color:var(--brown);letter-spacing:1px}
+.bp-cta{
+  background:var(--ink);color:var(--cream);border:none;
+  padding:12px 28px;font-family:'Space Mono',monospace;font-size:11px;
+  letter-spacing:3px;text-transform:uppercase;cursor:pointer;border-radius:2px;
+  display:block;width:calc(100% - 56px);margin:16px 28px 28px;
+  transition:background 0.3s;
+}
+.bp-cta:hover{background:var(--brown)}
+
+/* ─── BOARDING PASS ANIMATIONS ─── */
+@keyframes bp-enter{
+  0%  {opacity:0;transform:translateY(60px) scale(0.94)}
+  65% {transform:translateY(-5px) scale(1.005)}
+  100%{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes bp-float{
+  0%,100%{transform:translateY(0)}
+  50%    {transform:translateY(-10px)}
+}
+@keyframes bp-shimmer{
+  0%       {left:-100px;opacity:0}
+  10%      {opacity:1}
+  90%      {opacity:0.9}
+  100%     {left:160%;opacity:0}
+}
+@keyframes plane-tilt{
+  0%,100%{transform:rotate(90deg)}
+  35%    {transform:rotate(78deg) translateY(-2px)}
+  65%    {transform:rotate(102deg) translateY(2px)}
+}
+@keyframes stamp-in{
+  0%  {opacity:0;transform:scale(2.2) rotate(-20deg)}
+  65% {transform:scale(0.88) rotate(4deg);opacity:1}
+  100%{opacity:1;transform:scale(1) rotate(0deg)}
+}
+@keyframes qr-pulse{
+  0%,60%,100%{box-shadow:0 0 0 0 rgba(92,107,46,0.55)}
+  30%        {box-shadow:0 0 0 10px rgba(92,107,46,0)}
+}
+@keyframes field-reveal{
+  from{opacity:0;transform:translateY(10px)}
+  to  {opacity:1;transform:translateY(0)}
+}
+@keyframes scan-line{
+  0%  {top:0;opacity:1}
+  85% {top:100%;opacity:0.5}
+  100%{top:100%;opacity:0}
+}
+@keyframes tear-draw{
+  from{opacity:0;transform:scaleX(0)}
+  to  {opacity:1;transform:scaleX(1)}
+}
+
+.boarding-pass{
+  animation:bp-enter 1s cubic-bezier(0.34,1.56,0.64,1) 0.2s both,
+            bp-float 5s ease-in-out 1.5s infinite;
+  overflow:hidden;
+}
+.boarding-pass::before{
+  content:'';position:absolute;top:0;bottom:0;left:-100px;width:70px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2) 50%,transparent);
+  transform:skewX(-15deg);pointer-events:none;z-index:20;
+  animation:bp-shimmer 6s ease-in-out 2.5s infinite;
+}
+.bp-status{animation:stamp-in 0.7s cubic-bezier(0.34,1.56,0.64,1) 0.9s both}
+.route-plane{
+  font-size:16px;display:inline-block;
+  animation:plane-tilt 3s ease-in-out 2s infinite;
+}
+.bp-qr{animation:qr-pulse 3s ease-out 2.2s infinite}
+.bp-field:nth-child(1){animation:field-reveal 0.45s ease 0.85s both}
+.bp-field:nth-child(2){animation:field-reveal 0.45s ease 1.05s both}
+.bp-field:nth-child(3){animation:field-reveal 0.45s ease 1.25s both}
+.bp-field:nth-child(4){animation:field-reveal 0.45s ease 1.45s both}
+.bp-field:nth-child(5){animation:field-reveal 0.45s ease 1.65s both}
+.bp-tear-line{animation:tear-draw 0.8s ease 1.0s both;transform-origin:left}
+.bp-barcode-wrap{position:relative;overflow:hidden;display:inline-block}
+.bp-barcode-wrap::after{
+  content:'';position:absolute;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--olive),transparent);
+  top:0;animation:scan-line 2.5s linear 1.8s infinite;
+}
+@media(prefers-reduced-motion:reduce){
+  .boarding-pass{animation:none;opacity:1}
+  .boarding-pass::before,.bp-barcode-wrap::after{display:none}
+  .route-plane,.bp-status,.bp-qr,.bp-field,.bp-tear-line{
+    animation:none;opacity:1;transform:none;box-shadow:none
+  }
+}
+
+/* ─── ENHANCED SCROLL ANIMATIONS ─── */
+/* Section label lines grow from center */
+.section-label::before,.section-label::after{
+  transform:scaleX(0);transform-origin:center;
+  transition:transform 0.65s ease;
+}
+.section-label.visible::before,.section-label.visible::after{
+  transform:scaleX(1);transition-delay:0.28s;
+}
+/* Invite card: children cascade in */
+.invite-card .invite-bismillah,
+.invite-card .invite-text,
+.invite-card .invite-note{
+  opacity:0;transform:translateY(14px);
+  transition:opacity 0.65s ease,transform 0.65s ease;
+}
+.invite-card.visible .invite-bismillah{opacity:1;transform:none;transition-delay:0.15s}
+.invite-card.visible .invite-text{opacity:1;transform:none;transition-delay:0.35s}
+.invite-card.visible .invite-note{opacity:1;transform:none;transition-delay:0.6s}
+.invite-card .stamp-corner{
+  opacity:0;transform:scale(2) rotate(-20deg);
+  transition:opacity 0.4s ease,transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+.invite-card.visible .stamp-corner{
+  opacity:0.65;transform:rotate(-8deg) scale(1);transition-delay:0.82s;
+}
+/* Journey: node pops + content slides in */
+.journey-node{transform:scale(0);transition:transform 0.45s cubic-bezier(0.34,1.56,0.64,1)}
+.journey-stop.visible .journey-node{transform:scale(1);transition-delay:0.18s}
+.journey-content{opacity:0;transform:translateX(18px);transition:opacity 0.5s ease,transform 0.5s ease}
+.journey-stop.visible .journey-content{opacity:1;transform:none;transition-delay:0.32s}
+/* Location info slides up */
+.location-card .location-info{
+  opacity:0;transform:translateY(14px);
+  transition:opacity 0.6s ease,transform 0.6s ease;
+}
+.location-card.visible .location-info{opacity:1;transform:none;transition-delay:0.28s}
+/* Stagger helper classes (applied via JS) */
+.will-animate{opacity:0;transition:opacity 0.5s ease,transform 0.5s ease}
+.will-animate.from-left{transform:translateX(-22px)}
+.will-animate.from-up{transform:translateY(18px)}
+.will-animate.from-scale{transform:scale(0.88)}
+@media(prefers-reduced-motion:reduce){
+  .section-label::before,.section-label::after{transition:none;transform:none}
+  .invite-card .invite-bismillah,.invite-card .invite-text,.invite-card .invite-note,
+  .invite-card .stamp-corner,.journey-node,.journey-content,
+  .location-card .location-info,.will-animate{opacity:1;transform:none;transition:none}
+}
+
+/* ─── STAMP ─── */
+.stamp{
+  display:inline-block;border:2px solid currentColor;border-radius:4px;
+  padding:4px 10px;transform:rotate(-8deg);font-family:'Space Mono',monospace;
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;opacity:0.65;
+}
+
+/* ─── SECTION BASE ─── */
+.section-wrap{padding:60px 20px;max-width:660px;margin:0 auto}
+.section-label{
+  font-family:'Space Mono',monospace;font-size:9px;letter-spacing:4px;
+  text-transform:uppercase;color:var(--brown);
+  display:flex;align-items:center;gap:10px;margin-bottom:8px;
+}
+.section-label::before,.section-label::after{content:'';flex:1;border-top:1px solid var(--beige)}
+.section-title{font-family:'Playfair Display',serif;font-size:28px;text-align:center;color:var(--ink);margin-bottom:24px;line-height:1.3}
+
+/* ─── INVITATION ─── */
+.invite-card{
+  background:var(--warm-white);border:1px solid var(--beige);
+  border-radius:4px;padding:32px;position:relative;overflow:hidden;
+}
+.invite-bismillah{
+  text-align:center;font-size:18px;color:var(--brown);
+  margin-bottom:20px;padding-bottom:20px;border-bottom:1px dashed var(--beige);
+}
+.invite-text{
+  font-size:15px;line-height:1.9;color:var(--ink);
+  text-align:center;font-style:italic;font-family:'Playfair Display',serif;
+}
+.invite-note{
+  text-align:center;margin-top:16px;padding-top:16px;
+  border-top:1px dashed var(--beige);
+  font-family:'Space Mono',monospace;font-size:11px;color:var(--sage);letter-spacing:1px;
+}
+.stamp-corner{position:absolute;top:16px;right:16px;color:var(--stamp-green)}
+
+/* ─── EVENT CARD ─── */
+.event-boarding{
+  background:var(--warm-white);border:1px solid var(--beige);
+  border-radius:4px;overflow:hidden;margin-top:20px;
+}
+.event-header{
+  background:var(--ink);color:var(--cream);
+  padding:16px 24px;display:flex;align-items:center;justify-content:space-between;
+}
+.event-header-title{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase}
+.event-header-num{font-family:'Space Mono',monospace;font-size:11px;color:var(--brown)}
+.event-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px dashed var(--beige)}
+.event-row:last-child{border-bottom:none}
+.event-cell{padding:16px 24px}
+.event-cell:first-child:not(.event-full){border-right:1px dashed var(--beige)}
+.event-cell label{display:block;font-family:'Space Mono',monospace;font-size:9px;color:var(--brown);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.event-cell span{font-size:14px;color:var(--ink);font-weight:700}
+.event-full{grid-column:1/-1}
+
+/* ─── JOURNEY ─── */
+.journey-section{background:var(--dark);padding:60px 20px}
+.journey-inner{max-width:660px;margin:0 auto}
+.journey-inner .section-label{color:var(--brown)}
+.journey-inner .section-label::before,.journey-inner .section-label::after{border-color:rgba(139,111,71,0.3)}
+.journey-inner .section-title{color:var(--cream)}
+.journey-desc{
+  color:rgba(245,240,232,0.65);text-align:center;font-size:14px;
+  line-height:1.8;margin-bottom:40px;max-width:520px;
+  margin-left:auto;margin-right:auto;
+}
+.journey-timeline{position:relative;padding-left:20px}
+.journey-timeline::before{
+  content:'';position:absolute;left:36px;top:0;bottom:0;
+  width:1px;background:linear-gradient(to bottom,transparent,var(--brown),transparent);opacity:0.4;
+}
+.journey-stop{display:flex;gap:20px;align-items:flex-start;margin-bottom:32px;position:relative}
+.journey-node{
+  width:30px;height:30px;border-radius:50%;border:2px solid var(--brown);
+  background:var(--dark);display:flex;align-items:center;justify-content:center;
+  font-size:14px;flex-shrink:0;position:relative;z-index:1;
+}
+.journey-node.active{background:var(--brown)}
+.journey-content{padding-top:3px;flex:1}
+.journey-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--brown);margin-bottom:3px}
+.journey-title{font-family:'Playfair Display',serif;font-size:17px;color:var(--cream);margin-bottom:3px}
+.journey-text{font-size:12px;color:rgba(245,240,232,0.5);line-height:1.6}
+
+/* ─── AGENDA ─── */
+.agenda-list{margin-top:20px;display:flex;flex-direction:column}
+.agenda-item{display:flex;gap:0;position:relative}
+.agenda-num-col{width:56px;flex-shrink:0;padding:0 12px 0 0;text-align:right;padding-top:18px}
+.agenda-num-col span{font-family:'Space Mono',monospace;font-size:10px;color:var(--brown)}
+.agenda-dot-col{width:24px;flex-shrink:0;display:flex;flex-direction:column;align-items:center}
+.agenda-dot{width:12px;height:12px;border-radius:50%;background:var(--brown);flex-shrink:0;margin-top:22px;position:relative;z-index:1}
+.agenda-dot.featured{background:var(--olive);width:14px;height:14px;margin-top:21px}
+.agenda-dot.last-dot{background:var(--stamp-green)}
+.agenda-line{flex:1;width:1px;background:var(--beige)}
+.agenda-content{flex:1;padding:14px 0 14px 16px}
+.agenda-title{font-size:15px;font-weight:700;color:var(--ink)}
+.agenda-desc{font-size:12px;color:#888;margin-top:2px}
+
+/* ─── GALLERY ─── */
+.gallery-section{background:var(--beige);padding:60px 20px}
+.gallery-section .section-label::before,.gallery-section .section-label::after{border-color:rgba(139,111,71,0.3)}
+.gallery-inner{max-width:660px;margin:0 auto}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:20px}
+.gallery-item{aspect-ratio:3/4;background:var(--dark);border-radius:2px;overflow:hidden;position:relative;cursor:pointer}
+.gallery-item.wide{grid-column:span 2;aspect-ratio:16/9}
+.gallery-placeholder{
+  width:100%;height:100%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:8px;
+  background:var(--ink);color:rgba(245,240,232,0.25);
+  transition:background 0.3s;
+}
+.gallery-item:hover .gallery-placeholder,.gc-item:hover .gallery-placeholder{background:#2e2e2e}
+.gallery-icon{font-size:22px}
+.gallery-note{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,232,0.3)}
+.gallery-hint{font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,240,232,0.15);margin-top:2px}
+.gallery-caption{text-align:center;margin-top:20px;font-family:'Space Mono',monospace;font-size:10px;color:var(--brown);letter-spacing:2px}
+
+/* ─── GALLERY COLLAGE ─── */
+.gallery-collage{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  grid-template-rows:155px 155px 160px 125px;
+  gap:6px;
+  margin:28px auto 8px;
+}
+.gc-item{
+  overflow:hidden;cursor:pointer;
+  box-shadow:0 3px 14px rgba(0,0,0,0.22);
+  transition:transform 0.3s ease,box-shadow 0.3s ease;
+}
+.gc-item img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Row 1: foto1 | foto2 | foto3 (portrait, 2 rows) */
+.gc-1 {grid-column:1/3;grid-row:1/2}
+.gc-2 {grid-column:3/5;grid-row:1/2}
+.gc-3 {grid-column:5/7;grid-row:1/3}
+/* Row 2: foto4 | foto5 | foto3 lanjut */
+.gc-4 {grid-column:1/3;grid-row:2/3}
+.gc-5 {grid-column:3/5;grid-row:2/3}
+/* Row 3: foto_utama (3col) | foto7 (2col) | foto8 (1col) */
+.gc-6 {grid-column:1/4;grid-row:3/4}
+.gc-7 {grid-column:4/6;grid-row:3/4}
+.gc-8 {grid-column:6/7;grid-row:3/4}
+/* Row 4: foto9 (1col) | foto10 (2col) | foto11 (2col) | foto12 (1col) */
+.gc-9 {grid-column:1/2;grid-row:4/5}
+.gc-10{grid-column:2/4;grid-row:4/5}
+.gc-11{grid-column:4/6;grid-row:4/5}
+.gc-12{grid-column:6/7;grid-row:4/5}
+
+.gc-item:hover{transform:scale(1.03);box-shadow:0 10px 32px rgba(0,0,0,0.38)}
+
+@media(max-width:600px){
+  .gallery-collage{
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows:auto;gap:5px;margin:16px 0 8px;
+  }
+  .gc-1,.gc-2,.gc-3,.gc-4,.gc-5,.gc-6,
+  .gc-7,.gc-8,.gc-9,.gc-10,.gc-11,.gc-12{
+    grid-column:auto;grid-row:auto;aspect-ratio:4/3;
+  }
+  .gc-3,.gc-6{grid-column:span 2;aspect-ratio:16/9}
+  .gc-item:hover{transform:scale(1.02)}
+}
+
+/* ─── LOCATION ─── */
+.location-section{padding:60px 20px}
+.location-inner{max-width:660px;margin:0 auto}
+.location-card{background:var(--warm-white);border:1px solid var(--beige);border-radius:4px;overflow:hidden;margin-top:20px}
+.location-map-placeholder{
+  height:200px;background:var(--ink);display:flex;
+  align-items:center;justify-content:center;position:relative;overflow:hidden;
+}
+.map-grid-svg{position:absolute;inset:0;opacity:0.08}
+.location-pin{position:relative;z-index:1;text-align:center}
+.location-pin-icon{font-size:32px;margin-bottom:8px}
+.location-pin-text{font-family:'Space Mono',monospace;font-size:10px;color:rgba(245,240,232,0.5);letter-spacing:2px;text-transform:uppercase}
+.location-info{padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.location-text h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--ink)}
+.location-text p{font-size:12px;color:var(--brown);font-family:'Space Mono',monospace;letter-spacing:1px;margin-top:4px;line-height:1.5}
+.maps-btn{
+  background:var(--olive);color:#fff;border:none;
+  padding:12px 20px;font-family:'Space Mono',monospace;font-size:10px;
+  letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;
+  text-decoration:none;display:inline-block;transition:background 0.3s;white-space:nowrap;
+}
+.maps-btn:hover{background:var(--stamp-green)}
+
+/* ─── RSVP ─── */
+.rsvp-section{background:var(--dark);padding:60px 20px}
+.rsvp-inner{max-width:660px;margin:0 auto}
+.rsvp-section .section-label{color:var(--brown)}
+.rsvp-section .section-label::before,.rsvp-section .section-label::after{border-color:rgba(139,111,71,0.3)}
+.rsvp-section .section-title{color:var(--cream)}
+.rsvp-form{
+  background:rgba(255,255,255,0.04);border:1px solid rgba(139,111,71,0.25);
+  border-radius:4px;padding:28px;display:flex;flex-direction:column;gap:18px;
+}
+.form-group label{
+  display:block;font-family:'Space Mono',monospace;font-size:9px;
+  letter-spacing:3px;text-transform:uppercase;color:var(--brown);margin-bottom:8px;
+}
+.form-group input,.form-group textarea,.form-group select{
+  width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(139,111,71,0.3);
+  border-radius:2px;padding:12px 14px;color:var(--cream);
+  font-family:'Lato',sans-serif;font-size:14px;outline:none;transition:border 0.3s;
+}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(245,240,232,0.25)}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--brown)}
+.form-group textarea{resize:vertical;min-height:80px}
+.form-group select option{background:var(--ink);color:var(--cream)}
+.status-options{display:flex;border:1px solid rgba(139,111,71,0.3);border-radius:2px;overflow:hidden}
+.status-opt{flex:1;text-align:center}
+.status-opt input[type="radio"]{display:none}
+.status-opt label{
+  display:block;padding:11px 6px;font-family:'Space Mono',monospace;
+  font-size:9px;letter-spacing:1px;text-transform:uppercase;
+  color:rgba(245,240,232,0.4);cursor:pointer;transition:all 0.2s;
+  border-right:1px solid rgba(139,111,71,0.3);
+}
+.status-opt:last-child label{border-right:none}
+.status-opt input:checked + label{background:var(--brown);color:var(--cream)}
+.rsvp-submit{
+  background:var(--cream);color:var(--ink);border:none;padding:14px;
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:3px;
+  text-transform:uppercase;cursor:pointer;border-radius:2px;width:100%;
+  transition:background 0.3s;font-weight:700;
+}
+.rsvp-submit:hover{background:var(--beige)}
+.rsvp-toast{
+  display:none;background:var(--olive);color:#fff;border-radius:2px;
+  padding:14px;text-align:center;font-family:'Space Mono',monospace;
+  font-size:11px;letter-spacing:2px;line-height:1.5;
+}
+.rsvp-toast.show{display:block}
+
+/* ─── FOOTER ─── */
+footer{background:var(--ink);color:rgba(245,240,232,0.5);text-align:center;padding:56px 20px}
+.footer-emblem{
+  width:64px;height:64px;border-radius:50%;border:1.5px solid rgba(139,111,71,0.5);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:26px;
+}
+.footer-title{font-family:'Playfair Display',serif;font-size:24px;color:var(--cream);margin-bottom:6px}
+.footer-sub{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--brown);margin-bottom:24px}
+.footer-divider{width:60px;height:1px;background:rgba(139,111,71,0.4);margin:0 auto 20px}
+.footer-msg{
+  font-family:'Playfair Display',serif;font-style:italic;font-size:15px;
+  color:rgba(245,240,232,0.6);max-width:400px;margin:0 auto 20px;line-height:1.7;
+}
+.footer-sig{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--brown)}
+.footer-team{
+  margin-top:24px;font-family:'Space Mono',monospace;font-size:9px;
+  letter-spacing:2px;color:rgba(245,240,232,0.15);
+}
+
+/* ─── SCROLL ANIMATION ─── */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.fade-in.delay-1{transition-delay:0.1s}
+.fade-in.delay-2{transition-delay:0.2s}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:600px){
+  .hamburger{display:flex}
+  .nav-links{
+    display:none;position:fixed;top:50px;left:0;right:0;
+    background:rgba(28,28,28,0.98);flex-direction:column;gap:0;padding:10px 0;
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:14px 24px;border-bottom:1px solid rgba(255,255,255,0.05)}
+  .bp-city-code{font-size:30px}
+  .bp-fields{grid-template-columns:1fr 1fr}
+  .event-row{grid-template-columns:1fr}
+  .event-cell:first-child:not(.event-full){border-right:none;border-bottom:1px dashed var(--beige)}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gallery-item.wide{grid-column:span 2}
+  .section-title{font-size:22px}
+  .invite-card{padding:20px}
+  .rsvp-form{padding:20px}
+}
+@media(max-width:380px){
+  .bp-city-code{font-size:26px}
+  .bp-fields{grid-template-columns:1fr 1fr}
+  .bp-cta{width:calc(100% - 40px);margin:12px 20px 20px}
+  .bp-top{padding:20px 20px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════ -->
+<nav role="navigation" aria-label="Navigasi utama">
+  <div class="nav-inner">
+    <div class="nav-logo">ATH · 2026</div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navlinks" role="menubar">
+      <li role="none"><a href="#detail" role="menuitem" onclick="closeNav()">Detail</a></li>
+      <li role="none"><a href="#journey" role="menuitem" onclick="closeNav()">Journey</a></li>
+      <li role="none"><a href="#agenda" role="menuitem" onclick="closeNav()">Agenda</a></li>
+      <li role="none"><a href="#galeri" role="menuitem" onclick="closeNav()">Galeri</a></li>
+      <li role="none"><a href="#rsvp" role="menuitem" onclick="closeNav()">RSVP</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     HERO — BOARDING PASS
+═══════════════════════════════════════════ -->
+<section class="hero" id="home" aria-label="Boarding Pass Undangan">
+  <!-- Background dekorasi -->
+  <div class="hero-bg" aria-hidden="true">
+    <svg viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <circle cx="100" cy="100" r="200" stroke="#fff" stroke-width="0.5"/>
+      <circle cx="700" cy="500" r="250" stroke="#fff" stroke-width="0.5"/>
+      <circle cx="400" cy="300" r="300" stroke="#fff" stroke-width="0.3"/>
+      <path d="M0,300 Q200,100 400,300 T800,300" stroke="#fff" stroke-width="0.5" fill="none"/>
+      <path d="M0,350 Q200,150 400,350 T800,350" stroke="#fff" stroke-width="0.3" fill="none"/>
+      <path d="M0,250 Q200,50 400,250 T800,250" stroke="#fff" stroke-width="0.2" fill="none"/>
+      <!-- Compass Rose -->
+      <g transform="translate(680,80)">
+        <line x1="0" y1="-32" x2="0" y2="32" stroke="#fff" stroke-width="0.5"/>
+        <line x1="-32" y1="0" x2="32" y2="0" stroke="#fff" stroke-width="0.5"/>
+        <line x1="-23" y1="-23" x2="23" y2="23" stroke="#fff" stroke-width="0.3"/>
+        <line x1="23" y1="-23" x2="-23" y2="23" stroke="#fff" stroke-width="0.3"/>
+        <circle cx="0" cy="0" r="6" fill="#fff" opacity="0.6"/>
+        <circle cx="0" cy="0" r="14" stroke="#fff" stroke-width="0.4" fill="none"/>
+        <text x="0" y="-38" text-anchor="middle" fill="#fff" font-size="9" font-family="Space Mono, monospace" font-weight="700">N</text>
+        <text x="38" y="4" text-anchor="start" fill="#fff" font-size="7" font-family="Space Mono, monospace">E</text>
+        <text x="0" y="50" text-anchor="middle" fill="#fff" font-size="7" font-family="Space Mono, monospace">S</text>
+        <text x="-38" y="4" text-anchor="end" fill="#fff" font-size="7" font-family="Space Mono, monospace">W</text>
+      </g>
+      <!-- Route dots decoration -->
+      <circle cx="150" cy="450" r="3" fill="#fff" opacity="0.3"/>
+      <circle cx="200" cy="430" r="2" fill="#fff" opacity="0.2"/>
+      <circle cx="240" cy="460" r="4" fill="#fff" opacity="0.15"/>
+    </svg>
+  </div>
+
+  <!-- BOARDING PASS CARD -->
+  <div class="boarding-pass">
+
+    <!-- TOP SECTION -->
+    <div class="bp-top">
+      <div class="bp-airline">
+        <span class="bp-airline-name">✦ Atharva Expeditions · 2026 ✦</span>
+        <span class="bp-status">HOMECOMING</span>
+      </div>
+
+      <!-- Route: OUT → HOME -->
+      <div class="bp-route">
+        <div class="bp-city">
+          <div class="bp-city-code">OUT</div>
+          <div class="bp-city-name">Departure</div>
+        </div>
+        <div class="bp-route-center">
+          <div class="route-line">
+            <div class="route-dot"></div>
+            <div class="route-dashes"></div>
+            <span class="route-plane" aria-hidden="true">✈</span>
+            <div class="route-dashes"></div>
+            <div class="route-dot"></div>
+          </div>
+          <div class="route-label">Return Flight</div>
+        </div>
+        <div class="bp-city bp-city-right">
+          <div class="bp-city-code">HOME</div>
+          <div class="bp-city-name">Arrival</div>
+        </div>
+      </div>
+
+      <!-- Judul Acara -->
+      <div class="bp-title-block">
+        <div class="bp-event-title">Atharva Homecoming</div>
+        <div class="bp-event-sub">Penutupan Program IDN Backpacker</div>
+      </div>
+
+      <!-- Detail Fields -->
+      <div class="bp-fields">
+        <div class="bp-field">
+          <label>Tanggal</label>
+          <span id="field-date">—</span>
+        </div>
+        <div class="bp-field">
+          <label>Waktu</label>
+          <span id="field-time">—</span>
+        </div>
+        <div class="bp-field">
+          <label>Gate</label>
+          <span>ATH-01</span>
+        </div>
+        <div class="bp-field">
+          <label>Tempat</label>
+          <span id="field-loc" style="font-size:11px">—</span>
+        </div>
+        <div class="bp-field">
+          <label>Flight No.</label>
+          <span>ATH-2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEAR LINE -->
+    <div class="bp-tear" aria-hidden="true">
+      <div class="bp-tear-circle"></div>
+      <div class="bp-tear-line"></div>
+      <div class="bp-tear-circle"></div>
+    </div>
+
+    <!-- BOTTOM: Barcode + QR -->
+    <div class="bp-bottom">
+      <div>
+        <div class="bp-barcode-wrap">
+          <div class="bp-barcode" id="barcode-el" aria-hidden="true"></div>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--brown);margin-top:4px;letter-spacing:1px">ATH-BACKPACKER-2026</div>
+      </div>
+      <a href="#rsvp" onclick="scrollToSection('rsvp');return false;" class="bp-qr-section" style="text-decoration:none;cursor:pointer;display:block;transition:opacity 0.2s" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'" aria-label="Klik untuk RSVP">
+        <div class="bp-qr" aria-hidden="true">
+          <div class="bp-qr-inner">
+            <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+              <rect x="2" y="2" width="16" height="16" rx="1" fill="#1C1C1C"/>
+              <rect x="5" y="5" width="10" height="10" rx="0.5" fill="#FDFAF5"/>
+              <rect x="7" y="7" width="6" height="6" rx="0.5" fill="#1C1C1C"/>
+              <rect x="26" y="2" width="16" height="16" rx="1" fill="#1C1C1C"/>
+              <rect x="29" y="5" width="10" height="10" rx="0.5" fill="#FDFAF5"/>
+              <rect x="31" y="7" width="6" height="6" rx="0.5" fill="#1C1C1C"/>
+              <rect x="2" y="26" width="16" height="16" rx="1" fill="#1C1C1C"/>
+              <rect x="5" y="29" width="10" height="10" rx="0.5" fill="#FDFAF5"/>
+              <rect x="7" y="31" width="6" height="6" rx="0.5" fill="#1C1C1C"/>
+              <rect x="22" y="22" width="4" height="4" fill="#1C1C1C"/>
+              <rect x="28" y="22" width="4" height="4" fill="#1C1C1C"/>
+              <rect x="34" y="22" width="4" height="4" fill="#1C1C1C"/>
+              <rect x="22" y="28" width="4" height="4" fill="#1C1C1C"/>
+              <rect x="34" y="28" width="4" height="4" fill="#1C1C1C"/>
+              <rect x="22" y="34" width="4" height="4" fill="#1C1C1C"/>
+              <rect x="28" y="34" width="4" height="4" fill="#1C1C1C"/>
+              <rect x="34" y="34" width="4" height="4" fill="#1C1C1C"/>
+            </svg>
+          </div>
+        </div>
+        <div class="bp-seat-info" style="color:var(--olive)">↓ KLIK UNTUK RSVP</div>
+      </a>
+    </div>
+
+    <!-- CTA Button -->
+    <button class="bp-cta" onclick="scrollToSection('detail')">
+      Lihat Detail Acara ↓
+    </button>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     INVITATION TEXT
+═══════════════════════════════════════════ -->
+<section id="undangan">
+  <div class="section-wrap">
+    <div class="section-label fade-in">Undangan Resmi</div>
+    <h2 class="section-title fade-in">Anda Diundang</h2>
+    <div class="invite-card fade-in">
+      <div class="stamp-corner stamp" style="color:var(--stamp-green)" aria-hidden="true">
+        ✓ Resmi<br>Terverifikasi
+      </div>
+      <div class="invite-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+      <p class="invite-text">
+        "Dengan penuh rasa syukur dan kerendahan hati, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara <em>Atharva Homecoming</em>, sebuah acara penutupan program IDN Backpacker sebagai bentuk apresiasi, refleksi, dan perayaan perjalanan para peserta."
+      </p>
+      <div class="invite-note">
+        ✦ &nbsp; Semoga acara ini menjadi momen penuh keberkahan<br>
+        dan kenangan indah bagi seluruh peserta dan tamu undangan. &nbsp; ✦
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     EVENT DETAILS
+═══════════════════════════════════════════ -->
+<section id="detail">
+  <div class="section-wrap" style="padding-top:0">
+    <div class="section-label fade-in">Detail Acara</div>
+    <h2 class="section-title fade-in">Informasi Kegiatan</h2>
+    <div class="event-boarding fade-in">
+      <div class="event-header">
+        <span class="event-header-title">✦ Boarding Information</span>
+        <span class="event-header-num">ATH-2026</span>
+      </div>
+      <div class="event-row">
+        <div class="event-cell">
+          <label>Nama Acara</label>
+          <span>Atharva Homecoming</span>
+        </div>
+        <div class="event-cell">
+          <label>Program</label>
+          <span style="font-size:12px">Penutupan IDN Backpacker</span>
+        </div>
+      </div>
+      <div class="event-row">
+        <div class="event-cell">
+          <label>Hari / Tanggal</label>
+          <span id="ev-date">—</span>
+        </div>
+        <div class="event-cell">
+          <label>Waktu</label>
+          <span id="ev-time">—</span>
+        </div>
+      </div>
+      <div class="event-row">
+        <div class="event-cell event-full">
+          <label>Tempat</label>
+          <span id="ev-location">—</span>
+        </div>
+      </div>
+      <div class="event-row">
+        <div class="event-cell event-full">
+          <label>Untuk</label>
+          <span style="font-size:11px">Ortu, Tamu &amp; Sekolah</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     JOURNEY TIMELINE
+═══════════════════════════════════════════ -->
+<section id="journey" class="journey-section">
+  <div class="journey-inner">
+    <div class="section-label fade-in">Jejak Perjalanan</div>
+    <h2 class="section-title fade-in">The Journey</h2>
+    <p class="journey-desc fade-in">
+      Perjalanan ini bukan hanya tentang mengunjungi berbagai tempat, tetapi juga tentang belajar mandiri, memahami budaya baru, membangun keberanian, dan membawa pulang pengalaman berharga.
+    </p>
+    <div class="journey-timeline">
+      <div class="journey-stop fade-in">
+        <div class="journey-node active" aria-hidden="true">✈</div>
+        <div class="journey-content">
+          <div class="journey-label">Phase 01</div>
+          <div class="journey-title">Departure</div>
+          <div class="journey-text">Langkah pertama meninggalkan zona nyaman, memulai petualangan nyata yang penuh dengan kemungkinan.</div>
+        </div>
+      </div>
+      <div class="journey-stop fade-in delay-1">
+        <div class="journey-node" aria-hidden="true">📚</div>
+        <div class="journey-content">
+          <div class="journey-label">Phase 02</div>
+          <div class="journey-title">Learning Journey</div>
+          <div class="journey-text">Belajar dari pengalaman langsung, setiap hari membawa pelajaran baru yang tak ternilai harganya.</div>
+        </div>
+      </div>
+      <div class="journey-stop fade-in delay-1">
+        <div class="journey-node" aria-hidden="true">🌍</div>
+        <div class="journey-content">
+          <div class="journey-label">Phase 03</div>
+          <div class="journey-title">Cultural Experience</div>
+          <div class="journey-text">Menyelami budaya baru, memperluas wawasan dan perspektif dalam memandang kehidupan.</div>
+        </div>
+      </div>
+      <div class="journey-stop fade-in delay-2">
+        <div class="journey-node" aria-hidden="true">🤝</div>
+        <div class="journey-content">
+          <div class="journey-label">Phase 04</div>
+          <div class="journey-title">Brotherhood &amp; Memories</div>
+          <div class="journey-text">Ikatan yang terjalin bersama teman seperjuangan, kenangan indah yang tak akan pernah terlupakan.</div>
+        </div>
+      </div>
+      <div class="journey-stop fade-in delay-2">
+        <div class="journey-node active" aria-hidden="true">🏠</div>
+        <div class="journey-content">
+          <div class="journey-label">Phase 05</div>
+          <div class="journey-title">Homecoming</div>
+          <div class="journey-text">Pulang membawa cerita, kebijaksanaan, dan semangat baru yang siap menyambut masa depan.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     AGENDA
+═══════════════════════════════════════════ -->
+<section id="agenda">
+  <div class="section-wrap">
+    <div class="section-label fade-in">Susunan Acara</div>
+    <h2 class="section-title fade-in">Rundown Kegiatan</h2>
+    <div class="agenda-list fade-in">
+      <div class="agenda-item">
+        <div class="agenda-num-col"><span>01</span></div>
+        <div class="agenda-dot-col"><div class="agenda-dot featured"></div><div class="agenda-line"></div></div>
+        <div class="agenda-content">
+          <div class="agenda-title">Opening Ceremony</div>
+          <div class="agenda-desc">Pembukaan resmi acara Atharva Homecoming.</div>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num-col"><span>02</span></div>
+        <div class="agenda-dot-col"><div class="agenda-dot"></div><div class="agenda-line"></div></div>
+        <div class="agenda-content">
+          <div class="agenda-title">Qur'an Recitation</div>
+          <div class="agenda-desc">Pembacaan ayat suci Al-Qur'an sebagai pembuka acara.</div>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num-col"><span>03</span></div>
+        <div class="agenda-dot-col"><div class="agenda-dot"></div><div class="agenda-line"></div></div>
+        <div class="agenda-content">
+          <div class="agenda-title">Welcoming Speech</div>
+          <div class="agenda-desc">Sambutan dari pihak sekolah, guru, dan perwakilan peserta.</div>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num-col"><span>04</span></div>
+        <div class="agenda-dot-col"><div class="agenda-dot featured"></div><div class="agenda-line"></div></div>
+        <div class="agenda-content">
+          <div class="agenda-title">Journey Documentary</div>
+          <div class="agenda-desc">Pemutaran video dokumentasi perjalanan IDN Backpacker 20 Negara.</div>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num-col"><span>05</span></div>
+        <div class="agenda-dot-col"><div class="agenda-dot featured"></div><div class="agenda-line"></div></div>
+        <div class="agenda-content">
+          <div class="agenda-title">Special Performance</div>
+          <div class="agenda-desc">Penampilan puisi dan sesi spesial dari peserta.</div>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num-col"><span>06</span></div>
+        <div class="agenda-dot-col"><div class="agenda-dot"></div><div class="agenda-line"></div></div>
+        <div class="agenda-content">
+          <div class="agenda-title">Journey Report</div>
+          <div class="agenda-desc">Laporan perjalanan dan pengalaman program IDN Backpacker 20 Negara.</div>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num-col"><span>07</span></div>
+        <div class="agenda-dot-col"><div class="agenda-dot"></div><div class="agenda-line"></div></div>
+        <div class="agenda-content">
+          <div class="agenda-title">Student Testimonial</div>
+          <div class="agenda-desc">Cerita dan kesan langsung dari perwakilan peserta.</div>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num-col"><span>08</span></div>
+        <div class="agenda-dot-col"><div class="agenda-dot featured"></div><div class="agenda-line"></div></div>
+        <div class="agenda-content">
+          <div class="agenda-title">Book Handover</div>
+          <div class="agenda-desc">Simbolis penyerahan buku perjalanan Backpacker.</div>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num-col"><span>09</span></div>
+        <div class="agenda-dot-col"><div class="agenda-dot featured"></div><div class="agenda-line"></div></div>
+        <div class="agenda-content">
+          <div class="agenda-title">Appreciation Session</div>
+          <div class="agenda-desc">Pemberian penghargaan dan sertifikat kepada peserta.</div>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num-col"><span>10</span></div>
+        <div class="agenda-dot-col"><div class="agenda-dot"></div><div class="agenda-line"></div></div>
+        <div class="agenda-content">
+          <div class="agenda-title">Break Time</div>
+          <div class="agenda-desc">ISHOMA bersama seluruh audience.</div>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num-col"><span>11</span></div>
+        <div class="agenda-dot-col"><div class="agenda-dot"></div><div class="agenda-line"></div></div>
+        <div class="agenda-content">
+          <div class="agenda-title">Mentor Message</div>
+          <div class="agenda-desc">Kesan, pesan, dan motivasi dari pembimbing.</div>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num-col"><span>12</span></div>
+        <div class="agenda-dot-col"><div class="agenda-dot"></div><div class="agenda-line"></div></div>
+        <div class="agenda-content">
+          <div class="agenda-title">Closing Prayer</div>
+          <div class="agenda-desc">Doa bersama sebagai penutup acara utama.</div>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num-col"><span>13</span></div>
+        <div class="agenda-dot-col"><div class="agenda-dot featured"></div><div class="agenda-line"></div></div>
+        <div class="agenda-content">
+          <div class="agenda-title">Photo Session</div>
+          <div class="agenda-desc">Foto bersama seluruh peserta, guru, dan tamu undangan.</div>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num-col"><span>14</span></div>
+        <div class="agenda-dot-col"><div class="agenda-dot"></div><div class="agenda-line"></div></div>
+        <div class="agenda-content">
+          <div class="agenda-title">Report Distribution</div>
+          <div class="agenda-desc">Pembagian rapot kepada wali murid.</div>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num-col"><span>15</span></div>
+        <div class="agenda-dot-col"><div class="agenda-dot last-dot"></div></div>
+        <div class="agenda-content">
+          <div class="agenda-title">Gathering &amp; Lunch</div>
+          <div class="agenda-desc">Ramah tamah dan makan bersama seluruh audience.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     GALLERY
+═══════════════════════════════════════════ -->
+<section id="galeri" class="gallery-section">
+  <div class="gallery-inner">
+    <div class="section-label fade-in">Dokumentasi</div>
+    <h2 class="section-title fade-in">Galeri Perjalanan</h2>
+    <div class="gallery-collage fade-in">
+      <div class="gc-item gc-1"><img src="assets/images/foto1.png" alt="Perjalanan 1" loading="lazy"></div>
+      <div class="gc-item gc-2"><img src="assets/images/foto2.png" alt="Perjalanan 2" loading="lazy"></div>
+      <div class="gc-item gc-3"><img src="assets/images/foto3.png" alt="Perjalanan 3" loading="lazy"></div>
+      <div class="gc-item gc-4"><img src="assets/images/foto4.png" alt="Perjalanan 4" loading="lazy"></div>
+      <div class="gc-item gc-5"><img src="assets/images/foto5.png" alt="Perjalanan 5" loading="lazy"></div>
+      <div class="gc-item gc-6"><img src="assets/images/foto_utama.png" alt="Foto Utama" loading="lazy"></div>
+      <div class="gc-item gc-7"><img src="assets/images/foto7.png" alt="Perjalanan 7" loading="lazy"></div>
+      <div class="gc-item gc-8"><img src="assets/images/foto8.png" alt="Perjalanan 8" loading="lazy"></div>
+      <div class="gc-item gc-9"><img src="assets/images/foto9.png" alt="Perjalanan 9" loading="lazy"></div>
+      <div class="gc-item gc-10"><img src="assets/images/foto10.png" alt="Perjalanan 10" loading="lazy"></div>
+      <div class="gc-item gc-11"><img src="assets/images/foto11.png" alt="Perjalanan 11" loading="lazy"></div>
+      <div class="gc-item gc-12"><img src="assets/images/foto12.png" alt="Perjalanan 12" loading="lazy"></div>
+    </div>
+    <div class="gallery-caption">✦ Galeri Perjalanan Atharva 2025/2026 ✦</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     LOCATION
+═══════════════════════════════════════════ -->
+<section id="lokasi" class="location-section">
+  <div class="location-inner">
+    <div class="section-label fade-in">Venue</div>
+    <h2 class="section-title fade-in">Lokasi Acara</h2>
+    <div class="location-card fade-in">
+      <div style="width:100%;height:300px;overflow:hidden">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6438.262865232871!2d106.90092156671085!3d-6.620113809696296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c74e89cfb299%3A0xc1a96812ddf429e5!2sHoney%20Land%20Sentul!5e0!3m2!1sen!2sid!4v1780912283277!5m2!1sen!2sid" width="100%" height="300" style="border:0;display:block" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Lokasi Honey Land Sentul"></iframe>
+      </div>
+      <div class="location-info">
+        <div class="location-text">
+          <h3 id="loc-name">—</h3>
+          <p id="loc-address">—</p>
+        </div>
+        <a href="#" id="maps-link" class="maps-btn" target="_blank" rel="noopener">
+          🗺 Buka Google Maps
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     RSVP
+═══════════════════════════════════════════ -->
+<section id="rsvp" class="rsvp-section">
+  <div class="rsvp-inner">
+    <div class="section-label fade-in">Konfirmasi Kehadiran</div>
+    <h2 class="section-title fade-in">RSVP</h2>
+    <div class="rsvp-form fade-in" role="form" aria-label="Form RSVP kehadiran">
+      <div class="form-group">
+        <label for="rsvp-name">Nama Lengkap</label>
+        <input type="text" id="rsvp-name" placeholder="Masukkan nama Anda...">
+      </div>
+      <div class="form-group">
+        <label for="rsvp-count">Jumlah Tamu yang Hadir <span style="color:var(--brown);font-size:8px;letter-spacing:1px">(MAKS 3 ORANG)</span></label>
+        <input type="number" id="rsvp-count" placeholder="1" min="1" max="3" oninput="if(this.value>3)this.value=3">
+        <div style="margin-top:8px;padding:10px 12px;background:rgba(139,111,71,0.1);border-left:2px solid var(--brown);border-radius:2px;font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,240,232,0.55);letter-spacing:0.5px;line-height:1.7">
+          ⚠ &nbsp;Jumlah tamu dibatasi maks. 3 orang per peserta karena keterbatasan kapasitas tempat dan konsumsi. Terima kasih atas pengertiannya.
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Status Kehadiran</label>
+        <div class="status-options" role="radiogroup">
+          <div class="status-opt">
+            <input type="radio" name="status" id="s-hadir" value="Hadir">
+            <label for="s-hadir">✓ Hadir</label>
+          </div>
+          <div class="status-opt">
+            <input type="radio" name="status" id="s-tidak" value="Tidak Hadir">
+            <label for="s-tidak">✗ Tidak</label>
+          </div>
+          <div class="status-opt">
+            <input type="radio" name="status" id="s-belum" value="Belum Pasti" checked>
+            <label for="s-belum">? Belum</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="rsvp-msg">Pesan / Ucapan (opsional)</label>
+        <textarea id="rsvp-msg" placeholder="Tuliskan pesan atau ucapan untuk para peserta..."></textarea>
+      </div>
+      <button class="rsvp-submit" onclick="submitRSVP()" type="button">
+        Kirim Konfirmasi ✓
+      </button>
+      <div class="rsvp-toast" id="rsvp-toast" role="alert" aria-live="polite">
+        ✓ &nbsp; Terima kasih! Konfirmasi kehadiran Anda telah tercatat.<br>
+        <span style="font-size:10px;opacity:0.8">Kami menantikan kehadiran Anda 🙏</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-emblem" aria-hidden="true">✈</div>
+  <div class="footer-title">Atharva Homecoming</div>
+  <div class="footer-sub">Penutupan Program IDN Backpacker · 2026</div>
+  <div class="footer-divider"></div>
+  <p class="footer-msg">
+    "Kami menantikan kehadiran Bapak/Ibu/Saudara/i dalam momen spesial ini. Kehadiran Anda adalah kehormatan bagi kami."
+  </p>
+  <div class="footer-sig">— Atharva Backpacker Team —</div>
+  <div class="footer-team">✦ &nbsp; KELUARGA BESAR ATHARVA &nbsp; ✦</div>
+  <div style="margin-top:20px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1px;color:rgba(245,240,232,0.2)">
+    Made by <a href="https://rafieaswandi.my.id" target="_blank" rel="noopener" style="color:rgba(245,240,232,0.35);text-decoration:none;transition:color 0.3s" onmouseover="this.style.color='rgba(245,240,232,0.7)'" onmouseout="this.style.color='rgba(245,240,232,0.35)'">rafieaswandi.my.id</a>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPT
+═══════════════════════════════════════════ -->
+<script>
+/* ══════════════════════════════════════════════════════
+   EVENT DATA — EDIT DI SINI
+   Isi semua informasi acara di bawah ini.
+   Simpan file, lalu buka di browser untuk melihat hasil.
+══════════════════════════════════════════════════════ */
+const eventData = {
+  date:      "Sabtu, 20 Juni 2026",
+  time:      "08.00 WIB s/d Selesai",
+  location:  "Honey Land Sentul",
+  address:   "Jl. Gunung Batu, Bojong Koneng, Kec. Babakan Madang, Kabupaten Bogor, Jawa Barat 16810",
+  mapsUrl:   "https://maps.app.goo.gl/YkkjqayjrHsZpGNXA"
+};
+/* ══════════════════════════════════════════════════════ */
+
+// Inject data ke semua elemen
+function injectData() {
+  const set = (id, val, fallback) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = (val && !val.startsWith('[')) ? val : (fallback || '—');
+  };
+  set('field-date',  eventData.date);
+  set('field-time',  eventData.time);
+  set('field-loc',   eventData.location);
+  set('ev-date',     eventData.date);
+  set('ev-time',     eventData.time);
+  set('ev-location', eventData.address || eventData.location);
+  set('loc-name',    eventData.location);
+  set('loc-address', eventData.address);
+  const mapsLink = document.getElementById('maps-link');
+  if (mapsLink && eventData.mapsUrl !== '#') mapsLink.href = eventData.mapsUrl;
+}
+
+// Generate barcode visual
+function generateBarcode() {
+  const bc = document.getElementById('barcode-el');
+  if (!bc) return;
+  const seed = [3,1,2,1,3,1,1,2,1,3,2,1,1,3,1,2,1,1,3,1,2,2,1,1,3,1,1,2,1,3,2,1,1,2];
+  seed.forEach((h, i) => {
+    const bar = document.createElement('div');
+    bar.className = 'bp-barcode-bar';
+    const w = (i % 4 === 0) ? 2 : (i % 5 === 0) ? 3 : 1;
+    bar.style.cssText = `width:${w}px;height:${h * 5 + 14}px`;
+    bc.appendChild(bar);
+  });
+}
+
+// Smooth scroll
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Navbar toggle (mobile)
+function toggleNav() {
+  const nav = document.getElementById('navlinks');
+  const btn = document.getElementById('hamburger');
+  const isOpen = nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded', isOpen);
+}
+function closeNav() {
+  document.getElementById('navlinks').classList.remove('open');
+  document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
+}
+
+// RSVP submit → Google Forms
+const GFORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSceNas53k1YpwED8ilJ9FW4GCogoVuOlJYSVbiAPJxsot5J2Q/formResponse';
+
+function submitRSVP() {
+  const nameInput = document.getElementById('rsvp-name');
+  const name = nameInput.value.trim();
+  if (!name) {
+    nameInput.style.borderColor = '#c0392b';
+    nameInput.focus();
+    nameInput.placeholder = 'Nama tidak boleh kosong!';
+    return;
+  }
+  nameInput.style.borderColor = '';
+
+  const status = document.querySelector('input[name="status"]:checked');
+  const params = new URLSearchParams({
+    'entry.2115222925': name,
+    'entry.819722054':  document.getElementById('rsvp-count').value || '1',
+    'entry.92639912':   status ? status.value : 'Belum Pasti',
+    'entry.1705641055': document.getElementById('rsvp-msg').value.trim(),
+  });
+
+  const btn = document.querySelector('.rsvp-submit');
+  btn.textContent = 'Mengirim...';
+  btn.disabled = true;
+
+  fetch(GFORM_URL, { method: 'POST', mode: 'no-cors', body: params })
+    .then(() => {
+      const toast = document.getElementById('rsvp-toast');
+      toast.classList.add('show');
+      document.getElementById('rsvp-name').value = '';
+      document.getElementById('rsvp-count').value = '';
+      document.getElementById('rsvp-msg').value = '';
+      document.getElementById('s-belum').checked = true;
+      nameInput.placeholder = 'Masukkan nama Anda...';
+      setTimeout(() => toast.classList.remove('show'), 6000);
+    })
+    .catch(() => {
+      alert('Gagal mengirim. Periksa koneksi internet Anda.');
+    })
+    .finally(() => {
+      btn.textContent = 'Kirim Konfirmasi ✓';
+      btn.disabled = false;
+    });
+}
+
+// Scroll animation observer
+function initScrollAnimation() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+}
+
+// Stagger child elements within sections when parent enters view
+function initStaggerAnimations() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const groups = [
+    { p: '.event-boarding',  c: '.event-header,.event-row',  d: 0.10, dir: 'from-left' },
+    { p: '.agenda-list',     c: '.agenda-item',               d: 0.04, dir: 'from-left' },
+    { p: '.gallery-collage', c: '.gc-item',                   d: 0.05, dir: 'from-scale' },
+    { p: '.rsvp-form',       c: '.form-group,.rsvp-submit',   d: 0.10, dir: 'from-up' },
+    { p: 'footer',           c: '.footer-emblem,.footer-title,.footer-sub,.footer-divider,.footer-msg,.footer-sig,.footer-team', d: 0.08, dir: 'from-up' },
+  ];
+  groups.forEach(({ p, c, d, dir }) => {
+    const parent = document.querySelector(p);
+    if (!parent) return;
+    const items = [...parent.querySelectorAll(c)];
+    items.forEach((el, i) => {
+      el.classList.add('will-animate', dir);
+      el.style.transitionDelay = `${(i * d).toFixed(2)}s`;
+    });
+    const obs = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      obs.disconnect();
+      items.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+      const cleanupMs = (items.length - 1) * d * 1000 + 650;
+      setTimeout(() => items.forEach(el => {
+        el.classList.remove('will-animate', dir);
+        el.style.transitionDelay = '';
+        el.style.opacity = '';
+        el.style.transform = '';
+      }), cleanupMs);
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+    obs.observe(parent);
+  });
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+  injectData();
+  generateBarcode();
+  initScrollAnimation();
+  initStaggerAnimations();
+});
+</script>
+</body>
+</html>
