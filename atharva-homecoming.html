@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atharva Homecoming — Undangan Digital</title>
 <link rel="icon" type="image/png" href="assets/icon/AH-Icon.png">
-<meta name="description" content="Undangan digital Atharva Homecoming — Penutupan Program IDN Backpacker 2026">
+<meta name="description" content="Undangan digital Atharva Homecoming 2026 — Penutupan Program IDN Backpacker 2026">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -225,18 +225,6 @@ nav{
 .invite-card.visible .invite-bismillah{opacity:1;transform:none;transition-delay:0.15s}
 .invite-card.visible .invite-text{opacity:1;transform:none;transition-delay:0.35s}
 .invite-card.visible .invite-note{opacity:1;transform:none;transition-delay:0.6s}
-.invite-card .stamp-corner{
-  opacity:0;transform:scale(2) rotate(-20deg);
-  transition:opacity 0.4s ease,transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
-}
-.invite-card.visible .stamp-corner{
-  opacity:0.65;transform:rotate(-8deg) scale(1);transition-delay:0.82s;
-}
-/* Journey: node pops + content slides in */
-.journey-node{transform:scale(0);transition:transform 0.45s cubic-bezier(0.34,1.56,0.64,1)}
-.journey-stop.visible .journey-node{transform:scale(1);transition-delay:0.18s}
-.journey-content{opacity:0;transform:translateX(18px);transition:opacity 0.5s ease,transform 0.5s ease}
-.journey-stop.visible .journey-content{opacity:1;transform:none;transition-delay:0.32s}
 /* Location info slides up */
 .location-card .location-info{
   opacity:0;transform:translateY(14px);
@@ -251,7 +239,6 @@ nav{
 @media(prefers-reduced-motion:reduce){
   .section-label::before,.section-label::after{transition:none;transform:none}
   .invite-card .invite-bismillah,.invite-card .invite-text,.invite-card .invite-note,
-  .invite-card .stamp-corner,.journey-node,.journey-content,
   .location-card .location-info,.will-animate{opacity:1;transform:none;transition:none}
 }
 
@@ -290,8 +277,6 @@ nav{
   border-top:1px dashed var(--beige);
   font-family:'Space Mono',monospace;font-size:11px;color:var(--sage);letter-spacing:1px;
 }
-.stamp-corner{position:absolute;top:16px;right:16px;color:var(--stamp-green)}
-
 /* ─── EVENT CARD ─── */
 .event-boarding{
   background:var(--warm-white);border:1px solid var(--beige);
@@ -310,34 +295,22 @@ nav{
 .event-cell label{display:block;font-family:'Space Mono',monospace;font-size:9px;color:var(--brown);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
 .event-cell span{font-size:14px;color:var(--ink);font-weight:700}
 .event-full{grid-column:1/-1}
-
-/* ─── JOURNEY ─── */
-.journey-section{background:var(--dark);padding:60px 20px}
-.journey-inner{max-width:660px;margin:0 auto}
-.journey-inner .section-label{color:var(--brown)}
-.journey-inner .section-label::before,.journey-inner .section-label::after{border-color:rgba(139,111,71,0.3)}
-.journey-inner .section-title{color:var(--cream)}
-.journey-desc{
-  color:rgba(245,240,232,0.65);text-align:center;font-size:14px;
-  line-height:1.8;margin-bottom:40px;max-width:520px;
-  margin-left:auto;margin-right:auto;
+.rsvp-cta-btn{
+  background:var(--ink);color:var(--cream);border:none;
+  padding:14px 36px;font-family:'Space Mono',monospace;font-size:11px;
+  letter-spacing:3px;text-transform:uppercase;cursor:pointer;border-radius:2px;
+  transition:background 0.3s,box-shadow 0.3s,transform 0.2s;
+  position:relative;overflow:hidden;
 }
-.journey-timeline{position:relative;padding-left:20px}
-.journey-timeline::before{
-  content:'';position:absolute;left:36px;top:0;bottom:0;
-  width:1px;background:linear-gradient(to bottom,transparent,var(--brown),transparent);opacity:0.4;
+.rsvp-cta-btn::before{
+  content:'';position:absolute;top:0;bottom:0;left:-80px;width:60px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.12) 50%,transparent);
+  transform:skewX(-15deg);pointer-events:none;
+  transition:left 0.5s ease;
 }
-.journey-stop{display:flex;gap:20px;align-items:flex-start;margin-bottom:32px;position:relative}
-.journey-node{
-  width:30px;height:30px;border-radius:50%;border:2px solid var(--brown);
-  background:var(--dark);display:flex;align-items:center;justify-content:center;
-  font-size:14px;flex-shrink:0;position:relative;z-index:1;
-}
-.journey-node.active{background:var(--brown)}
-.journey-content{padding-top:3px;flex:1}
-.journey-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--brown);margin-bottom:3px}
-.journey-title{font-family:'Playfair Display',serif;font-size:17px;color:var(--cream);margin-bottom:3px}
-.journey-text{font-size:12px;color:rgba(245,240,232,0.5);line-height:1.6}
+.rsvp-cta-btn:hover{background:var(--brown);box-shadow:0 6px 24px rgba(139,111,71,0.35);transform:translateY(-1px)}
+.rsvp-cta-btn:hover::before{left:160%}
+.rsvp-cta-btn:active{transform:translateY(0)}
 
 /* ─── AGENDA ─── */
 .agenda-list{margin-top:20px;display:flex;flex-direction:column}
@@ -520,10 +493,13 @@ footer{background:var(--ink);color:rgba(245,240,232,0.5);text-align:center;paddi
   .hamburger{display:flex}
   .nav-links{
     display:none;position:fixed;top:50px;left:0;right:0;
-    background:rgba(28,28,28,0.98);flex-direction:column;gap:0;padding:10px 0;
+    background:rgba(28,28,28,0.98);flex-direction:column;gap:0;padding:6px 0 12px;
   }
   .nav-links.open{display:flex}
-  .nav-links a{padding:14px 24px;border-bottom:1px solid rgba(255,255,255,0.05)}
+  .nav-links a{
+    padding:18px 28px;border-bottom:1px solid rgba(255,255,255,0.07);
+    font-size:13px;letter-spacing:2.5px;
+  }
   .bp-city-code{font-size:30px}
   .bp-fields{grid-template-columns:1fr 1fr}
   .event-row{grid-template-columns:1fr}
@@ -532,6 +508,7 @@ footer{background:var(--ink);color:rgba(245,240,232,0.5);text-align:center;paddi
   .gallery-item.wide{grid-column:span 2}
   .section-title{font-size:22px}
   .invite-card{padding:20px}
+  .stamp{font-size:6.5px;padding:2px 5px;letter-spacing:1px;border-width:1.5px}
   .rsvp-form{padding:20px}
 }
 @media(max-width:380px){
@@ -555,7 +532,6 @@ footer{background:var(--ink);color:rgba(245,240,232,0.5);text-align:center;paddi
     </button>
     <ul class="nav-links" id="navlinks" role="menubar">
       <li role="none"><a href="#detail" role="menuitem" onclick="closeNav()">Detail</a></li>
-      <li role="none"><a href="#journey" role="menuitem" onclick="closeNav()">Journey</a></li>
       <li role="none"><a href="#agenda" role="menuitem" onclick="closeNav()">Agenda</a></li>
       <li role="none"><a href="#galeri" role="menuitem" onclick="closeNav()">Galeri</a></li>
       <li role="none"><a href="#rsvp" role="menuitem" onclick="closeNav()">RSVP</a></li>
@@ -630,7 +606,7 @@ footer{background:var(--ink);color:rgba(245,240,232,0.5);text-align:center;paddi
 
       <!-- Judul Acara -->
       <div class="bp-title-block">
-        <div class="bp-event-title">Atharva Homecoming</div>
+        <div class="bp-event-title">Atharva Homecoming 2026</div>
         <div class="bp-event-sub">Penutupan Program IDN Backpacker</div>
       </div>
 
@@ -714,15 +690,16 @@ footer{background:var(--ink);color:rgba(245,240,232,0.5);text-align:center;paddi
 ═══════════════════════════════════════════ -->
 <section id="undangan">
   <div class="section-wrap">
-    <div class="section-label fade-in">Undangan Resmi</div>
+    <div class="section-label fade-in" style="position:relative">
+      <span style="position:relative;display:inline-block">Undangan Resmi
+        <span class="stamp" style="position:absolute;right:-100px;top:250%;transform:translateY(-50%) rotate(-8deg);color:var(--stamp-green);font-size:7px;padding:2px 7px;letter-spacing:1px;border-width:1.5px;line-height:1.6;text-align:center;background:var(--cream);white-space:nowrap" aria-hidden="true">✓ Resmi<br>Terverifikasi</span>
+      </span>
+    </div>
     <h2 class="section-title fade-in">Anda Diundang</h2>
     <div class="invite-card fade-in">
-      <div class="stamp-corner stamp" style="color:var(--stamp-green)" aria-hidden="true">
-        ✓ Resmi<br>Terverifikasi
-      </div>
       <div class="invite-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
       <p class="invite-text">
-        "Dengan penuh rasa syukur dan kerendahan hati, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara <em>Atharva Homecoming</em>, sebuah acara penutupan program IDN Backpacker sebagai bentuk apresiasi, refleksi, dan perayaan perjalanan para peserta."
+        "Dengan penuh rasa syukur dan kerendahan hati, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara <em>Atharva Homecoming 2026</em>, sebuah acara penutupan program IDN Backpacker sebagai bentuk apresiasi, refleksi, dan perayaan perjalanan para peserta."
       </p>
       <div class="invite-note">
         ✦ &nbsp; Semoga acara ini menjadi momen penuh keberkahan<br>
@@ -747,7 +724,7 @@ footer{background:var(--ink);color:rgba(245,240,232,0.5);text-align:center;paddi
       <div class="event-row">
         <div class="event-cell">
           <label>Nama Acara</label>
-          <span>Atharva Homecoming</span>
+          <span>Atharva Homecoming 2026</span>
         </div>
         <div class="event-cell">
           <label>Program</label>
@@ -777,63 +754,15 @@ footer{background:var(--ink);color:rgba(245,240,232,0.5);text-align:center;paddi
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════
-     JOURNEY TIMELINE
-═══════════════════════════════════════════ -->
-<section id="journey" class="journey-section">
-  <div class="journey-inner">
-    <div class="section-label fade-in">Jejak Perjalanan</div>
-    <h2 class="section-title fade-in">The Journey</h2>
-    <p class="journey-desc fade-in">
-      Perjalanan ini bukan hanya tentang mengunjungi berbagai tempat, tetapi juga tentang belajar mandiri, memahami budaya baru, membangun keberanian, dan membawa pulang pengalaman berharga.
-    </p>
-    <div class="journey-timeline">
-      <div class="journey-stop fade-in">
-        <div class="journey-node active" aria-hidden="true">✈</div>
-        <div class="journey-content">
-          <div class="journey-label">Phase 01</div>
-          <div class="journey-title">Departure</div>
-          <div class="journey-text">Langkah pertama meninggalkan zona nyaman, memulai petualangan nyata yang penuh dengan kemungkinan.</div>
-        </div>
-      </div>
-      <div class="journey-stop fade-in delay-1">
-        <div class="journey-node" aria-hidden="true">📚</div>
-        <div class="journey-content">
-          <div class="journey-label">Phase 02</div>
-          <div class="journey-title">Learning Journey</div>
-          <div class="journey-text">Belajar dari pengalaman langsung, setiap hari membawa pelajaran baru yang tak ternilai harganya.</div>
-        </div>
-      </div>
-      <div class="journey-stop fade-in delay-1">
-        <div class="journey-node" aria-hidden="true">🌍</div>
-        <div class="journey-content">
-          <div class="journey-label">Phase 03</div>
-          <div class="journey-title">Cultural Experience</div>
-          <div class="journey-text">Menyelami budaya baru, memperluas wawasan dan perspektif dalam memandang kehidupan.</div>
-        </div>
-      </div>
-      <div class="journey-stop fade-in delay-2">
-        <div class="journey-node" aria-hidden="true">🤝</div>
-        <div class="journey-content">
-          <div class="journey-label">Phase 04</div>
-          <div class="journey-title">Brotherhood &amp; Memories</div>
-          <div class="journey-text">Ikatan yang terjalin bersama teman seperjuangan, kenangan indah yang tak akan pernah terlupakan.</div>
-        </div>
-      </div>
-      <div class="journey-stop fade-in delay-2">
-        <div class="journey-node active" aria-hidden="true">🏠</div>
-        <div class="journey-content">
-          <div class="journey-label">Phase 05</div>
-          <div class="journey-title">Homecoming</div>
-          <div class="journey-text">Pulang membawa cerita, kebijaksanaan, dan semangat baru yang siap menyambut masa depan.</div>
-        </div>
-      </div>
+    <div class="fade-in" style="text-align:center;margin-top:28px">
+      <button onclick="scrollToSection('rsvp')" class="rsvp-cta-btn">
+        Konfirmasi Kehadiran &nbsp;→
+      </button>
     </div>
   </div>
 </section>
+
+
 
 <!-- ═══════════════════════════════════════════
      AGENDA
@@ -848,7 +777,7 @@ footer{background:var(--ink);color:rgba(245,240,232,0.5);text-align:center;paddi
         <div class="agenda-dot-col"><div class="agenda-dot featured"></div><div class="agenda-line"></div></div>
         <div class="agenda-content">
           <div class="agenda-title">Opening Ceremony</div>
-          <div class="agenda-desc">Pembukaan resmi acara Atharva Homecoming.</div>
+          <div class="agenda-desc">Pembukaan resmi acara Atharva Homecoming 2026.</div>
         </div>
       </div>
       <div class="agenda-item">
@@ -1072,7 +1001,7 @@ footer{background:var(--ink);color:rgba(245,240,232,0.5);text-align:center;paddi
 ═══════════════════════════════════════════ -->
 <footer>
   <div class="footer-emblem" aria-hidden="true">✈</div>
-  <div class="footer-title">Atharva Homecoming</div>
+  <div class="footer-title">Atharva Homecoming 2026</div>
   <div class="footer-sub">Penutupan Program IDN Backpacker · 2026</div>
   <div class="footer-divider"></div>
   <p class="footer-msg">
